@@ -196,6 +196,9 @@ jobs:
       run: |
         PATH="${HOME}/.local/bin:${PATH}" make vvtest
       shell: bash
+    - name: Setup tmate session
+      if: ${{ failure() }}
+      uses: mxschmitt/action-tmate@v3
     - name: Turn coverage into xml
       env:
         COLOR: 'yes'
